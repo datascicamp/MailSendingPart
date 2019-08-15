@@ -9,6 +9,7 @@ Add . /var/app/webServerDir
 # Import packages
 RUN pip install Flask
 RUN pip install Flask-wtf
+RUN pip install wtforms
 RUN pip install psycopg2-binary
 RUN pip install flask-mail
 RUN pip install pyjwt

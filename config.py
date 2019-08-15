@@ -16,6 +16,6 @@ class Config(object):
     ADMINS = ['leontian1024@gmail.com']
 
     # for account info handling api
-    ACCOUNT_SERVICE_IP = '127.0.0.1'
-    ACCOUNT_SERVICE_PORT = '4999'
+    ACCOUNT_SERVICE_IP = '174.137.53.253'
+    ACCOUNT_SERVICE_PORT = '30501'
     ACCOUNT_SERVICE_URL = ACCOUNT_SERVICE_IP + ':' + ACCOUNT_SERVICE_PORT

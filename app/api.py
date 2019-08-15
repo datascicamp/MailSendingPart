@@ -69,7 +69,7 @@ def send_reset_password_email_by_account_id():
 
 
 # send reset password email by account_email fields
-@app.route('/api/reset-password/email-sending-by-account-id', methods=['POST'])
+@app.route('/api/reset-password/email-sending-by-account-email', methods=['POST'])
 def send_reset_password_email_by_account_email():
     account_email = request.form.get('account_email')
     destin_url = 'http://' + Config.ACCOUNT_SERVICE_URL +\
