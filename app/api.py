@@ -8,6 +8,7 @@ from config import Config
 import requests
 
 
+# ---------------- registration ----------------- #
 # send registration email by account_id fields
 @app.route('/api/registration/email-sending-by-account-id', methods=['POST'])
 def send_registration_email_by_account_id():
@@ -16,8 +17,8 @@ def send_registration_email_by_account_id():
                  '/api/registration/token-creating/account-id/' + str(account_id)
     account_unverify = get_api_info(requests.get(destin_url))[0]
     send_register_email(account_unverify)
-    # data = [{'account_email': account_email, 'email_status': 'success'}]
-    return jsonify(account_unverify)
+    data = [{'account_id': account_id, 'email_sending_status': 'success'}]
+    return jsonify(data)
 
 
 # send registration email by account_email fields
@@ -28,8 +29,8 @@ def send_registration_email_by_account_email():
                  '/api/registration/token-creating/account-email/' + str(account_email)
     account_unverify = get_api_info(requests.get(destin_url))[0]
     send_register_email(account_unverify)
-    # data = [{'account_email': account_email, 'email_status': 'success'}]
-    return jsonify(account_unverify)
+    data = [{'account_email': account_email, 'email_sending_status': 'success'}]
+    return jsonify(data)
 
 
 # receive registration token
@@ -52,10 +53,10 @@ def receive_registration_token(token):
                              '/api/account/account-updating'
         requests.put(update_account_url, data=account_verified)
         data.append(account_verified)
-        # ToDo: Render template
         return jsonify(data)
 
 
+# ---------------- reset password ----------------- #
 # send reset password email by account_id fields
 @app.route('/api/reset-password/email-sending-by-account-id', methods=['POST'])
 def send_reset_password_email_by_account_id():
@@ -64,8 +65,8 @@ def send_reset_password_email_by_account_id():
                  '/api/reset-password/token-creating/account-id/' + str(account_id)
     account_to_reset = get_api_info(requests.get(destin_url))[0]
     send_password_reset_email(account_to_reset)
-    # data = [{'account_id': account_id, 'email_status': 'success'}]
-    return jsonify(account_to_reset)
+    data = [{'account_id': account_id, 'email_status': 'success'}]
+    return jsonify(data)
 
 
 # send reset password email by account_email fields
@@ -76,8 +77,8 @@ def send_reset_password_email_by_account_email():
                  '/api/reset-password/token-creating/account-email/' + str(account_email)
     account_to_reset = get_api_info(requests.get(destin_url))[0]
     send_password_reset_email(account_to_reset)
-    # data = [{'account_email': account_email, 'email_status': 'success'}]
-    return jsonify(account_to_reset)
+    data = [{'account_email': account_email, 'email_status': 'success'}]
+    return jsonify(data)
 
 
 # receive reset password token
@@ -92,11 +93,12 @@ def receive_reset_password_token(token):
         return result.content
     # change account_status
     else:
-        # ToDo: Render template
         account_to_reset = get_api_info(result)[0]
-        return jsonify(account_to_reset)
+        data.append(account_to_reset)
+        return jsonify(data)
 
 
+# ---------------- functional defines ----------------- #
 # bad requests holder
 def bad_request(message):
     return error_response(400, message)
