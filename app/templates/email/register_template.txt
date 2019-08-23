@@ -6,7 +6,7 @@ Dear user,
 
     Please click the link below:
 
-    {{ url_for('receive_registration_token', token=token, _external=True) }}
+    {{ register_url }}
 
     ...and then, enjoy yourself in DataSciCamp!
 
