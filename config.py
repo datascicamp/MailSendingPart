@@ -7,23 +7,24 @@ class Config(object):
     SECRET_KEY = os.environ.get('WEB_SERVER_SECRET_KEY') or 'abcdef020301abc8c86f'
 
     # for Mail Server
-    MAIL_SERVER = 'smtp.googlemail.com'
-    MAIL_PORT = '587'
-    MAIL_USE_TLS = '1'
-    MAIL_USERNAME = 'leontian1024'
-    MAIL_PASSWORD = ''
+    MAIL_SERVER = os.environ.get('MAIL_SERVER')
+    MAIL_PORT = os.environ.get('MAIL_PORT')
+    MAIL_USE_SSL = os.environ.get('MAIL_USE_SSL')
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    ADMIN = os.environ.get('ADMIN')
 
-    ADMINS = ['leontian1024@gmail.com']
+    ADMINS = list().append(ADMIN)
 
     # for account info handling api
-    ACCOUNT_SERVICE_IP = '127.0.01'
-    ACCOUNT_SERVICE_PORT = '4998'
+    ACCOUNT_SERVICE_IP = os.environ.get('DSC_LOGIN_REGISTER_PART_SERVICE_HOST')
+    ACCOUNT_SERVICE_PORT = os.environ.get('DSC_LOGIN_REGISTER_PART_SERVICE_PORT')
     ACCOUNT_SERVICE_URL = ACCOUNT_SERVICE_IP + ':' + ACCOUNT_SERVICE_PORT
 
     # for Auth UI sending API location
-    AUTH_UI_SERVICE_IP = '127.0.0.1'
-    AUTH_UI_SERVICE_PORT = '5000'
-    AUTH_UI_RESET_PASSWORD_API = '/reset-password/'
-    AUTH_UI_REGISTER_CONFIRM_API = '/register-confirmation/'
+    AUTH_UI_SERVICE_IP = os.environ.get('AUTH_UI_SERVICE_IP')
+    AUTH_UI_SERVICE_PORT = os.environ.get('AUTH_UI_SERVICE_PORT')
+    AUTH_UI_RESET_PASSWORD_API = '/auth/reset-password/'
+    AUTH_UI_REGISTER_CONFIRM_API = '/auth/register-confirmation/'
     AUTH_UI_RESET_PASSWORD_URL = AUTH_UI_SERVICE_IP + ':' + AUTH_UI_SERVICE_PORT + AUTH_UI_RESET_PASSWORD_API
     AUTH_UI_REGISTER_CONFIRM_URL = AUTH_UI_SERVICE_IP + ':' + AUTH_UI_SERVICE_PORT + AUTH_UI_REGISTER_CONFIRM_API
