@@ -13,6 +13,7 @@ RUN pip install wtforms
 RUN pip install psycopg2-binary
 RUN pip install flask-mail
 RUN pip install pyjwt
+RUN pip install requests
 RUN pip install flask_bootstrap
 RUN pip install python-dotenv
 # Expose port
