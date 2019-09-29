@@ -12,7 +12,7 @@ class Config(object):
     MAIL_USE_SSL = os.environ.get('MAIL_USE_SSL')
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    ADMINS = list().append(os.environ.get('ADMIN'))
+    ADMINS = [os.environ.get('ADMIN')]
 
     # for account info handling api
     ACCOUNT_SERVICE_IP = os.environ.get('DSC_LOGIN_REGISTER_PART_SERVICE_HOST')
