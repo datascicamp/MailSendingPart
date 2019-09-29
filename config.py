@@ -22,8 +22,8 @@ class Config(object):
     ACCOUNT_SERVICE_URL = ACCOUNT_SERVICE_IP + ':' + ACCOUNT_SERVICE_PORT
 
     # for Auth UI sending API location
-    AUTH_UI_SERVICE_IP = os.environ.get('AUTH_UI_SERVICE_IP')
-    AUTH_UI_SERVICE_PORT = os.environ.get('AUTH_UI_SERVICE_PORT')
+    AUTH_UI_SERVICE_IP = 'www.datascicamp.com'
+    AUTH_UI_SERVICE_PORT = '80'
     AUTH_UI_RESET_PASSWORD_API = '/auth/reset-password/'
     AUTH_UI_REGISTER_CONFIRM_API = '/auth/register-confirmation/'
     AUTH_UI_RESET_PASSWORD_URL = AUTH_UI_SERVICE_IP + ':' + AUTH_UI_SERVICE_PORT + AUTH_UI_RESET_PASSWORD_API
